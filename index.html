@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/gh/exacti/floating-labels@latest/floating-labels.min.css"
+      media="screen"
+    />
+    <link rel="stylesheet" href="./style.css" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <title>Company</title>
+  </head>
+  <body>
+    <div class="row">
+      <div class="col-6 offset-3">
+        <fieldset class="fieldset">
+          <legend class="legend">Signup</legend>
+          <div class="row main">
+            <div class="col-8 offset-2 form-label-group">
+              <input
+                type="text"
+                id="fnameup"
+                class="form-control:focus input"
+                placeholder="Full Name*"
+                required
+              />
+              <label class="label">Full Name*</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-8 offset-2 form-label-group">
+              <input
+                type="email"
+                id="emailup"
+                class="form-control:focus input"
+                placeholder="Email*"
+                required
+              />
+              <label for="form1" class="label">Email*</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-8 offset-2 form-label-group">
+              <input
+                type="password"
+                id="passup"
+                class="form-control:focus input"
+                placeholder="password*"
+                minlength="8"
+                required
+              />
+              <label for="form1" class="label">Password*</label>
+            </div>
+          </div>
+          <!-- <button class="sub btn-primary" id="signup" onclick="signUp()"> -->
+          <button class="sub btn-primary" id="signup" onclick="forSignIn()">
+            Signup
+          </button>
+        </fieldset>
+      </div>
+    </div>
+
+    <div id="user"></div>
+  </body>
+  <script src="./app.js"></script>
+  <script>
+    var user2 = localStorage.getItem("userobj");
+
+    console.log("user", JSON.parse(user2));
+
+    var userData1 = JSON.parse(user2);
+
+    let output;
+
+    var uData1 = userData1.map((v) => {
+      output = "<div><p>";
+      output += v.name;
+      output += "</p></div>";
+    });
+
+    console.log(userData1, "i", uData1, output);
+    const parser = new DOMParser();
+    const data = parser.parseFromString(output, "text/html");
+
+    console.log("ou", output);
+
+    document.getElementById("user").innerHTML = output;
+  </script>
+
+  <script
+    src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"
+  ></script>
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"
+  ></script>
+  <script
+    src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"
+  ></script>
+</html>

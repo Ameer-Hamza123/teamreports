@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/gh/exacti/floating-labels@latest/floating-labels.min.css"
+      media="screen"
+    />
+    <link rel="stylesheet" href="../style.css" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+      integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.min.css"
+    />
+    <title>Company</title>
+  </head>
+  <body>
+    <div class="row">
+      <div class="col-10">
+        <fieldset class="fieldset">
+          <legend class="legend">Team/Owner view</legend>
+          <div class="border m-b-30" style="padding-top: 20px">
+            <ul class="nav">
+              <li class="nav-item col-2 offset-1">
+                <a class="nav-link" href="#">Reports</a>
+              </li>
+              <li class="nav-item col-1">
+                <a class="nav-link" href="../setting/setting.html">Settings</a>
+              </li>
+            </ul>
+          </div>
+          <div class="row">
+            <div class="col-3 offset-1 form-label-group">
+              <select
+                class="selectpicker ddown"
+                id="teamcategory"
+                searchable="Search here..."
+              >
+                <option>Category</option>
+                <option>Hello</option>
+                <option>Hello</option>
+              </select>
+            </div>
+            <div class="col-3 offset-4">
+              <input
+                type="date"
+                name="date"
+                class="form-control"
+                id="date"
+                onchange="getDate()"
+              />
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-10 offset-1">
+              <span id="name"></span> : &nbsp; <span id="dataDate"> </span>
+            </div>
+          </div>
+
+          <div id="data"></div>
+
+          <!-- <div class="row">
+            <div class="col-10 offset-1">
+              <span>Arshad</span>: <span>16th Aug</span>| Not submitted yet
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-6 offset-2">Q. What did you do today?</div>
+          </div>
+          <div class="row">
+            <div class="col-12 offset-2">A.</div>
+          </div>
+          <div class="row">
+            <div class="col-6 offset-2">Q. What will you do tomorrow?</div>
+          </div>
+          <div class="row">
+            <div class="col-12 offset-2">A.</div>
+          </div>
+          <div class="row">
+            <div class="col-6 offset-2">
+              Q. Are there any blockers on your way?
+            </div>
+          </div>
+          <div class="row m-b-20">
+            <div class="col-12 offset-2">A.</div>
+          </div> -->
+        </fieldset>
+      </div>
+    </div>
+  </body>
+  <script>
+    let selectDate = [];
+    function getDate() {
+      let selectedDate = document.getElementById("date").value;
+
+      let membersDetails = JSON.parse(localStorage.getItem("memberArray"));
+      console.log(membersDetails, "yaah");
+
+      let datesData = [];
+
+      membersDetails.map((value) => {
+        datesData = value.dates;
+
+        let quesArr = [];
+
+        datesData.map((v) => {
+          console.log(v, "date", v.date, selectedDate);
+
+          quesArr = v.qna;
+          if (v.date === selectedDate) {
+            let perday = quesArr.map((data) => {
+              return `<div class="row">
+            <div class="col-10 offset-2">Q. &nbsp;${data.que}?</div>
+          </div>
+          <div class="row">
+            <div class="col-10 offset-2">A. &nbsp;${data.ans}.</div>
+          </div>`;
+            });
+            document.getElementById('name').innerHTML = value.name
+            document.getElementById("dataDate").innerHTML = selectedDate;
+            document.getElementById("data").innerHTML = perday;
+            //   console.log('per', perday)
+          }
+        });
+      });
+      console.log(datesData, "dat");
+    }
+    // console.log(selectDate);
+  </script>
+  <script src="../app.js"></script>
+  <script
+    src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"
+  ></script>
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"
+  ></script>
+  <script
+    src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"
+  ></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
+</html>

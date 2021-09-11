@@ -1,0 +1,125 @@
+body{
+    font-family: ui-monospace !important;
+}
+.input{
+    border: none !important;
+    border-bottom: 1px solid lightgray !important;
+    outline: none !important;
+    width: 100%;
+}
+.row{
+    margin-right: 0px !important;
+    margin-left: 0px !important;
+}
+.main{
+    margin-top: 10%;
+}
+.fieldset{
+    border: 2px solid gray;
+    margin-top: 15%;
+}
+.legend{
+    width: auto;
+    margin-left: 20px;
+    font-weight: bold;
+}
+.label{
+outline: none !important;
+}
+.sub{
+    margin-left: 45%;
+    width: 100px;
+    height: 40px;
+    margin-top: 5%;
+    margin-bottom: 10%;
+    cursor: pointer;
+}
+.team-own{
+    border: 2px solid gray;
+    padding: 10px;
+    margin-top: 10px;
+}
+.bold{
+    font-weight: bold;
+}
+.m-b-30{
+    margin-bottom: 30px;
+}
+.fas{
+    height: 50px;
+    width: 50px;
+    /* border-radius: 20px; */
+    font-size: 40px;
+    color: #007bff;
+    position: fixed;
+    margin-top: 60px;
+    margin-left: 30px;
+    cursor: pointer;
+}
+.marg{
+    margin-top: 13%;
+    }
+.modalhead{
+    font-size: 22px;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    font-weight: bold;
+}
+.ddown{
+    width: 100% !important;
+    border: 2px solid gray;
+    outline: none !important;
+}
+.Create{
+    /* margin-left: 25%; */
+    width: 100px;
+    height: 40px;
+    margin-top: 5%;
+    margin-bottom: 10%;
+    cursor: pointer; 
+}
+.cancel{
+    margin-left: 10% !important;
+    width: 100px;
+    height: 40px;
+    margin-top: 5%;
+    margin-bottom: 10%;
+    cursor: pointer;
+    background-color: #fc3903 ;
+    color: #fff;
+    border-radius: 0px !important; 
+}
+.modbord{
+    border: 1px solid #000 !important;
+    border-radius: 0px !important;
+}
+.m-b-20{
+    margin-bottom: 20px;
+}
+.options{
+    border: 1px solid lightgray;
+    height: 75px;
+}
+.inline{
+    display: inline-block !important;
+    margin-right: 50px;
+    margin-top: 6%;
+}
+.lista{
+    cursor: pointer;
+}
+.button-right{
+    background-color: white;
+    border: none;
+    outline: none !important;
+    cursor: pointer;
+    font-size: 30px;
+}
+.height-20{
+    height: 20px;
+}
+.members-email{
+    background-color: lightgray;
+    font-weight: bold;
+    border-radius: 20px;
+}

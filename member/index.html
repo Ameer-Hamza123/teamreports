@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/exacti/floating-labels@latest/floating-labels.min.css" media="screen">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Company</title>
+</head>
+<body>
+    <div class="row">
+        <div class="col-6 offset-3">
+    <fieldset class="fieldset">
+        <Legend class="legend">Team / Member view</Legend>
+        <div class="border" style="border-radius: 5px;">
+            <div class="row">
+                <div class="col-6 m-b-30" style="margin-top: 20px;">
+                    Filling For: <span style="font-weight: bold;"><u id="date"></u></span>
+                </div>
+            </div>
+        <div class="row ">
+            <div class="col-8 offset-1">Q. <span id="ansq1">What did you do today?</span></div>
+            <div class="col-8 offset-1 form-label-group">
+        <input type="text" id="ans1" class="form-control:focus input" placeholder="Full Name*" required />
+        <label class="label" >Answer</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-8 offset-1">Q. <span id="ansq2">What will you do tomorrow?</span></div>
+            <div class="col-8 offset-1 form-label-group">
+        <input type="text" id="ans2" class="form-control:focus input" placeholder="Email*" required />
+        <label for="form1" class="label">Answer</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-8 offset-1">Q. <span id="ansq3">Are there any blockers in your way?</span></div>
+            <div class="col-8 offset-1 form-label-group">
+        <input type="text" id="ans3" class="form-control:focus input" placeholder="password*" minlength="8" required />
+        <label for="form1" class="label">Answer</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-2">
+                <button class="sub btn-primary" onclick="anssubmit()">
+                    Submit
+                </button>
+            </div>
+        </div>
+    </div>
+</fieldset>
+<div id="user"></div>
+
+</div>
+</div>
+</body>
+<script src="../app.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script>
+    var user2 = localStorage.getItem("userobj");
+
+    console.log("user", JSON.parse(user2));
+
+    var userData1 = JSON.parse(user2);
+
+    let output;
+
+    var uData1 = userData1.map((v) => {
+      output = "<div><p>";
+      output += v.name;
+      output += "</p></div>";
+    });
+
+    console.log(userData1, "i", uData1, output);
+    const parser = new DOMParser();
+    const data = parser.parseFromString(output, "text/html");
+
+    console.log("ou", output);
+
+    // document.getElementById("user").innerHTML = output;
+  </script>
+<script>
+    let date = new Date();
+let dAte = date.getDate();
+let monTh = date.getMonth();
+let year = date.getFullYear();
+if (monTh === 0) {
+   monTh = "01";
+}else if (monTh === 1) { 
+   monTh = "02";
+}else if (monTh === 2) { 
+   monTh = "03";
+}else if (monTh === 3) { 
+   monTh = "04";
+}else if (monTh === 4) { 
+   monTh = "05";
+}else if (monTh === 5) { 
+   monTh = "06";
+}else if (monTh === 6) { 
+   monTh = "07";
+}else if (monTh === 7) { 
+   monTh = "08";
+}else if (monTh === 8) { 
+   monTh = "09";
+}else if (monTh === 9) { 
+   monTh = "10";
+}else if (monTh === 10) { 
+   monTh = "11";
+}else if (monTh === 11) { 
+   monTh = "12";
+}
+
+let dATe = year + "-" + monTh + "-" + dAte
+document.getElementById("date").innerHTML = dATe;
+
+let questobj = localStorage.getItem("QuestionObject");
+let questobj1 = JSON.parse(questobj);
+
+document.getElementById("ansq1").innerHTML = questobj1.ques1;
+document.getElementById("ansq2").innerHTML = questobj1.ques2;
+document.getElementById("ansq3").innerHTML = questobj1.ques3;
+
+</script>
+
+</html>

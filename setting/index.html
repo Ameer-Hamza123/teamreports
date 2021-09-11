@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/gh/exacti/floating-labels@latest/floating-labels.min.css"
+      media="screen"
+    />
+    <link rel="stylesheet" href="../style.css" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+      integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.min.css"
+    />
+    <title>Company</title>
+  </head>
+  <body>
+    <div class="row">
+      <div class="col-6 offset-3">
+        <fieldset class="fieldset">
+          <legend class="legend">Team/Owner view</legend>
+          <div class="border" style="padding-top: 20px">
+            <ul class="nav">
+              <li class="nav-item col-2 offset-1">
+                <a class="nav-link" href="../Reports/reports.html">Reports</a>
+              </li>
+              <li class="nav-item col-1">
+                <a class="nav-link" href="#">Settings</a>
+              </li>
+            </ul>
+          </div>
+          <div class="row">
+            <div class="col-12">Questions:</div>
+          </div>
+          <div class="row">
+            <div class="col-7 offset-1 form-label-group">
+              <input
+                type="email"
+                id="question1"
+                class="form-control:focus input"
+                placeholder="What did you do Today?"
+              />
+              <label for="form1" class="label" id="setques1"></label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-7 offset-1 form-label-group">
+              <input
+                type="email"
+                id="question2"
+                class="form-control:focus input"
+                placeholder="What will you do tomorrow?"
+              />
+              <label for="form1" class="label" id="setques2"></label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-7 offset-1 form-label-group">
+              <input
+                type="email"
+                id="question3"
+                class="form-control:focus input"
+                placeholder="Are there any blockers in your way?"
+              />
+              <label for="form1" class="label" id="setques3"> </label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12">Reminder Time:</div>
+          </div>
+          <div class="row">
+            <div class="col-3 offset-1">
+              <input type="time" name="time" class="form-control" />
+            </div>
+            <div class="col-1 offset-1">
+              <input type="checkbox" name="checkbox" class="form-control" />
+            </div>
+            <div class="col-3">
+              <span> Exclude Weekends</span>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12">Members:</div>
+          </div>
+          <div class="row m-b-20">
+            <div class="col-3 offset-1 members-email">
+              <span>abc@xyz.com</span
+              ><i
+                class="fad fa-times-circle float-right"
+                style="margin-top: 4px"
+              ></i>
+            </div>
+            <div class="col-3 members-email" style="margin-left: 10px">
+              <span>abc@xyz.com</span
+              ><i
+                class="fad fa-times-circle float-right"
+                style="margin-top: 4px"
+              ></i>
+            </div>
+            <div class="col-3 members-email" style="margin-left: 10px">
+              <span>abc@xyz.com</span
+              ><i
+                class="fad fa-times-circle float-right"
+                style="margin-top: 4px"
+              ></i>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-3 offset-1 members-email">
+              <span>abc@xyz.com</span
+              ><i
+                class="fad fa-times-circle float-right"
+                style="margin-top: 4px"
+              ></i>
+            </div>
+            <div class="col-3 members-email" style="margin-left: 10px">
+              <span>abc@xyz.com</span
+              ><i
+                class="fad fa-times-circle float-right"
+                style="margin-top: 4px"
+              ></i>
+            </div>
+            <div class="col-3 members-email" style="margin-left: 10px">
+              <span>abc@xyz.com</span
+              ><i
+                class="fad fa-times-circle float-right"
+                style="margin-top: 4px"
+              ></i>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-7 offset-1 form-label-group">
+              <input
+                type="email"
+                id="teamname"
+                class="form-control:focus input"
+                placeholder="Add Member"
+              />
+              <label for="form1" class="label">Add Member</label>
+            </div>
+            <div class="col-2">
+              <button class="btn-primary Create" style="margin-left: 10px">
+                Add
+              </button>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-2 offset-1" style="padding: 0px">
+              <button
+                class="btn-primary Create"
+                onclick="subset()"
+                style="width: 100% !important"
+              >
+                Save Changes
+              </button>
+            </div>
+            <div class="col-2 offset-1">
+              <button
+                class="btn Create"
+                style="
+                  width: 100% !important;
+                  border: 1px solid lightgray;
+                  background-color: #fff;
+                "
+              >
+                Cancel
+              </button>
+            </div>
+            <div class="col-2 offset-2">
+              <button class="btn cancel">Delete Team</button>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+    </div>
+  </body>
+  <script>
+    let questobj = localStorage.getItem("QuestionObject");
+    let questobj1 = JSON.parse(questobj);
+
+    console.log(questobj1);
+    document.getElementById("setques1").innerHTML = questobj1.ques1;
+    document.getElementById("setques2").innerHTML = questobj1.ques2;
+    document.getElementById("setques3").innerHTML = questobj1.ques3;
+  </script>
+  <script src="../app.js"></script>
+  <script
+    src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"
+  ></script>
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"
+  ></script>
+  <script
+    src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"
+  ></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
+</html>

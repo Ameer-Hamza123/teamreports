@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/gh/exacti/floating-labels@latest/floating-labels.min.css"
+      media="screen"
+    />
+    <link rel="stylesheet" href="../style.css" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+      integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.min.css"
+    />
+    <title>Company</title>
+  </head>
+  <body>
+    <div class="row">
+      <div class="col-6 offset-3">
+        <fieldset class="fieldset">
+          <div class="text-center" style="margin-top: -50px;">UserName : <span id="namez"> </span><i
+            class="fas fa-plus-circle col-2 "
+            data-toggle="modal"
+            data-target="#exampleModal"
+            style="font-size: 20px;"
+            
+          ></i></div>  
+          <legend class="legend">Teams</legend>
+          <h4 class="text-center">Teams You Own</h4>
+          <div class="row">
+            <div id="team-data"></div>
+          <h4 class="col-12 text-center">Teams You're Part Of</h4>
+          
+         <div id="allteams">
+
+         </div>
+
+              <!-- Button trigger modal -->
+              
+
+              <!-- Modal -->
+              <div
+                class="modal fade marg"
+                id="exampleModal"
+                tabindex="-1"
+                role="dialog"
+                aria-labelledby="exampleModalLabel"
+                aria-hidden="true"
+              >
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content modbord">
+                    <div class="row">
+                      <span class="col-6 offset-3 modalhead"
+                        ><a class="cursor">Create new Team</a>
+                      </span>
+                    </div>
+                    <div class="row m-b-20">
+                      <div class="col-10 offset-1 form-label-group">
+                        <input
+                          type="text"
+                          id="teamname"
+                          class="form-control:focus input"
+                          placeholder="Team Name"
+                        />
+                        <label for="form1" class="label">Team Name</label>
+                      </div>
+                    </div>
+                    <div class="row m-b-20">
+                      <div class="col-10 offset-1 form-label-group">
+                        <select
+                          class="selectpicker ddown"
+                          id="teamcategory"
+                          searchable="Search here..."
+                        >
+                          <option></option>
+                          <option>Developer</option>
+                          <option>Architecture</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div id="members_div"></div>
+                    <div class="col-10 offset-1 form-label-group">
+                      <input
+                        type="text"
+                        id="memname"
+                        class="form-control:focus input"
+                        placeholder="Member Name"
+                      />
+                      <label for="form1" class="label">Member Name</label>
+                    </div>
+                    <div class="row">
+                      <div class="col-9 offset-1 form-label-group">
+                        <input
+                          type="email"
+                          id="membersemail"
+                          class="form-control:focus input"
+                          placeholder="Members (type email)"
+                        />
+                        <label for="form1" class="label"
+                          >Members (type email)</label
+                        >
+                      </div>
+                      <div class="col-1">
+                        <button
+                          class="float-right button-right"
+                          
+                          onclick="verifyadd()"
+                          type="button"
+                        >
+                          +
+                        </button>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <button
+                        class="col-2 offset-3 btn-primary Create"
+                        onclick="teamcreate()"
+                      >
+                        Create
+                      </button>
+                      <button
+                        class="col-2 offset-1 btn cancel"
+                        data-dismiss="modal"
+                      >
+                        Cancel
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </div>
+        </fieldset>
+      </div>
+    </div>
+  </body>
+  <script>
+    document.getElementById('namez').innerHTML = JSON.parse(localStorage.getItem('name2'));
+   
+
+    let teamData = localStorage.getItem("teams");
+
+    let teamslist = JSON.parse(teamData);
+
+    console.log(teamslist);
+
+    let teamShow;
+
+    let teamdiv = teamslist.map ((v) => {
+      teamShow = ` <div class="row">
+            <div class="col-md-10 col-12 offset-md-1 team-own">
+              <div class="row">
+                <h5 class="col-12">${v.teamcategory} </h5>
+              </div>
+              <div class="row">
+              <div class="col-12" style = "line-break: anywhere;">
+              ${v.members.map((value) => { 
+                return value.name
+                }) }
+                </div>
+              </div>
+            </div>
+          </div>` ;
+          return teamShow;
+    })
+    console.log(teamdiv)
+
+    // let teamDiv = teamslist.map((v) => {
+    //   teamShow = "<div>";
+    //   teamShow += "<h5>";
+    //   teamShow += v.teamcategory;
+    //   teamShow += "</h5>";
+
+    //   v.membersemailarr.map((value) => {
+    //     teamShow += "<p>";
+
+    //     teamShow += value.name;
+
+    //     teamShow += "</p>";
+    //   });
+
+    //   teamShow += "</div>";
+
+    //   return teamShow;
+    // });  
+    // console.log(teamDiv, "yah", teamShow);
+
+    document.getElementById("team-data").innerHTML = teamdiv;
+    function remove() {
+    const listUl = domElements.app.querySelector('.saveUl');
+    listUl.addEventListener('click', (event) => {
+        if (event.target.tagName == 'div') {
+
+          // below tis to remove the element from the DOM, works ok.
+          let li = event.target.parentNode;
+          let ul = li.parentNode;
+          ul.removeChild(li);
+
+          //The code below seems abit iffy to me? as its here I am trying to remove from the index of the array
+          let displayItems = JSON.parse(localStorage.getItem("teams"));
+          let ele = displayItems.split(",");
+          var index = ele.indexOf(1);
+          ele.splice(index, 1);
+        }
+    });
+}
+    // function remove(index){
+    //         var getLSCityName = localStorage.getItem('teams');
+    //         getLSCityName.splice(index,1); // delete item at index
+    //     } 
+  </script>
+  <script src="../app.js"></script>
+  <script
+    src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"
+  ></script>
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"
+  ></script>
+  <script
+    src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"
+  ></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
+</html>
