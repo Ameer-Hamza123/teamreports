@@ -243,7 +243,7 @@ let teamDat = localStorage.getItem("teams");
     let teamSho;
 
     let teamdi = teamslis.map ((v) => {
-      teamSho = ` <div class="row">
+      teamSho = `<a href="../member"> <div class="row">
             <div class="col-md-10 col-12 offset-md-1 team-own">
               <div class="row">
                 <h5 class="col-12">${v.teamcategory} </h5>
@@ -256,7 +256,7 @@ let teamDat = localStorage.getItem("teams");
                 </div>
               </div>
             </div>
-          </div>` ;
+          </div></a>` ;
           return teamSho;
     })
     console.log(teamdi)
