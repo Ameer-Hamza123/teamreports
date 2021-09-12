@@ -1,5 +1,9 @@
 let userobject = [];
-userobject = JSON.parse(localStorage.getItem("userobj"));
+let userobjec = JSON.parse(localStorage.getItem("userobj"));
+
+if (userobjec.length !== 0){
+    userobject = userobjec;
+}
 function forSignIn() {
   let name = document.getElementById("fnameup").value;
   let email = document.getElementById("emailup").value;
@@ -39,14 +43,10 @@ const user = () => {
   for (let i = 0; i < usersarr.length; i++) {
     if (username === usersarr[i].email) {
       if (password === usersarr[i].password) {
-        for (let j = 0; j < tems.length; j++) {
-          if (usersarr[i].name === tems[j].ownername) {
-          }
           localStorage.setItem("name2", JSON.stringify(usersarr[i].name));
           userName = usersarr[i].name;
           console.log(userName, "hello");
           let uRl = location.assign("../teams");
-        }
         return uRl, userName;
       } else {
         return alert("wrong Email or password");
@@ -61,8 +61,70 @@ const user = () => {
   console.log(nae);
 };
 
+let members = [];
+var qNaarr = [];
+// console.log(members, qNaarr)
+const verifyadd = () => {
+  // console.log(userName, "abckdlfksakdm")
+  let email = document.getElementById("membersemail").value;
+  var bcd = document.getElementById("memname").value;
+  // let abc = document.getElementById("emailmodal").innerHTML = email;
+  // console.log("abc", abc);
+  // if (bcd.length !== 0 && abc.length == 0) {
+  //   return alert("please fillout all fields");
+  // }
+
+  members.push({ email: email, name: bcd });
+  localStorage.setItem("members", JSON.stringify(members));
+  document.getElementById("membersemail").value = null;
+  document.getElementById("memname").value = null;
+  // console.log(members.length);
+};
+
+let teams = [];
+
+// let teamlocal = JSON.parse(localStorage.getItem("teams"));
+
+let teamobjects = JSON.parse(localStorage.getItem("teams"));
+console.log(teamobjects)
+// if (teamobjects.length != null){
+//     teams = teamobjects;
+// }else{
+//   alert('hello')
+// }
+const teamCreate = () => {
+  let teamname = document.getElementById("teamname").value;
+  let teamcategory = document.getElementById("teamcategory").value;
+  let membersemail = members;
+  let ownername = JSON.parse(localStorage.getItem("name2"));
+  console.log(ownername);
+  // document.getElementById('user').innerHTML
+  console.log(ownername);
+  let teamobj = {
+    teamname,
+    teamcategory,
+    members,
+    ownername,
+  };
+
+  teams.push(teamobj);
+  console.log(membersemail, "yahan");
+  console.log(teams);
+
+  localStorage.setItem("teams", JSON.stringify(teams));
+};
+// console.log(teams, 'te');
+
+console.log("teams", teams);
+
+
 let ansobj = [];
-ansobj = JSON.parse(localStorage.getItem("Answerobject"));
+let ansob = JSON.parse(localStorage.getItem("Answerobject"));
+
+if (ansob.length !== 0) {
+  ansobj = ansob;
+}
+
 const anssubmit = () => {
   let date = dATe;
   let que1 = document.getElementById("ansq1").innerHTML;
@@ -146,58 +208,13 @@ memberData.push(memberDetail);
 
 localStorage.setItem("memberArray", JSON.stringify(memberData));
 
-let members = [];
-var qNaarr = [];
-// console.log(members, qNaarr)
-const verifyadd = () => {
-  // console.log(userName, "abckdlfksakdm")
-  let email = document.getElementById("membersemail").value;
-  var bcd = document.getElementById("memname").value;
-  // let abc = document.getElementById("emailmodal").innerHTML = email;
-  // console.log("abc", abc);
-  // if (bcd.length !== 0 && abc.length == 0) {
-  //   return alert("please fillout all fields");
-  // }
 
-  members.push({ email: email, name: bcd });
-  localStorage.setItem("members", JSON.stringify(members));
-  document.getElementById("membersemail").value = null;
-  document.getElementById("memname").value = null;
-  // console.log(members.length);
-};
 // console.log(members);
 // const addMember = () => {
 //   console.log('yahan')
 // }
 
 // console.log(members);
-let teams = [];
-
-teams = JSON.parse(localStorage.getItem("teams"));
-const teamcreate = () => {
-  let teamname = document.getElementById("teamname").value;
-  let teamcategory = document.getElementById("teamcategory").value;
-  let membersemail = members;
-  let ownername = JSON.parse(localStorage.getItem("name2"));
-  console.log(ownername);
-  // document.getElementById('user').innerHTML
-  console.log(ownername);
-  let teamobj = {
-    teamname,
-    teamcategory,
-    members,
-    ownername,
-  };
-
-  teams.push(teamobj);
-  console.log(membersemail, "yahan");
-  console.log(teams);
-
-  localStorage.setItem("teams", JSON.stringify(teams));
-};
-// console.log(teams, 'te');
-
-console.log("teams", teams);
 
 // let teamsD;
 
