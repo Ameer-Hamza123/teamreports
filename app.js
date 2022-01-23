@@ -119,11 +119,11 @@ console.log("teams", teams);
 
 
 let ansobj = [];
-let ansob = JSON.parse(localStorage.getItem("Answerobject"));
+let ansob = JSON.parse(localStorage.getItem("Answerobject")) || [];
 
-if (ansob.length !== 0) {
-  ansobj = ansob;
-}
+//if (ansob.length !== 0) {
+ // ansobj = ansob;
+//}
 
 const anssubmit = () => {
   let date = dATe;
